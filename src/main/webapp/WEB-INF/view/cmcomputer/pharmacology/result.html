@@ -1,0 +1,73 @@
+@layout("../../system/newLayout.html", {title: ""}){
+
+<el-row style="margin-top: 10px;">
+    <el-col :span="2" class="grid-content bg-purple input-head" offset=11>合理性评分</el-col>
+    <el-col :span="2" class="grid-content input-head">0.99</el-col>
+</el-row>
+
+<el-row style="margin-top: 10px;">
+    <el-col :span="3" class="grid-content bg-purple input-head" offset=11 style = "font-size: large">中药药理作用</el-col>
+</el-row>
+<el-row style="margin-top: 10px;">
+    <el-col :span="20" offset=2>
+        <el-table
+                :data="tableDrug"
+                style="width: 100%">
+            <el-table-column
+                    prop="id"
+                    label="序号"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="中药名"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="function"
+                    label="药理作用"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="type"
+                    label="分类"
+                    width="250px">
+            </el-table-column>
+        </el-table>
+    </el-col>
+</el-row>
+
+<el-row style="margin-top: 10px;">
+    <el-col :span="3" class="grid-content bg-purple input-head" offset=11>主要作用靶标</el-col>
+</el-row>
+<el-row style="margin-top: 10px;">
+    <el-col :span="20" offset=2>
+        <el-table
+                :data="tableTarget"
+                style="width: 100%">
+            <el-table-column
+                    prop="id"
+                    label="序号"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="target"
+                    label="靶点"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="gene"
+                    label="基因名"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="uniprot"
+                    label="Uniprot_id"
+                    width="250px">
+            </el-table-column>
+        </el-table>
+    </el-col>
+</el-row>
+
+<script src="${ctxPath}/static/js/cmcomputer/pharmacology/result.js"></script>
+@}

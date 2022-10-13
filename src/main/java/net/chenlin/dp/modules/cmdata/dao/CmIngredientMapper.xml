@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.chenlin.dp.modules.cmdata.dao.CmIngredientMapper">
+	
+	<select id="listForPage" resultType="net.chenlin.dp.modules.cmdata.entity.CmIngredientEntity">
+		SELECT
+			`ingredient_id`, 
+			`molecule_name`, 
+			`pubchem_cid`, 
+			`molecule_structure`, 
+			`molecule_formula`, 
+			`molecule_weight`, 
+			`ob_score`, 
+			`cas_id`, 
+			`tcmid_id`, 
+			`tcm_id_id`, 
+			`tcmsp_id`, 
+			`type`, 
+			`link_ingredient_id`
+		FROM
+			cm_ingredient
+		ORDER BY
+			ingredient_id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO cm_ingredient (
+			`ingredient_id`, 
+			`molecule_name`, 
+			`pubchem_cid`, 
+			`molecule_structure`, 
+			`molecule_formula`, 
+			`molecule_weight`, 
+			`ob_score`, 
+			`cas_id`, 
+			`tcmid_id`, 
+			`tcm_id_id`, 
+			`tcmsp_id`, 
+			`type`, 
+			`link_ingredient_id`
+		)
+		VALUES (
+			#{ingredientId}, 
+			#{moleculeName}, 
+			#{pubchemCid}, 
+			#{moleculeStructure}, 
+			#{moleculeFormula}, 
+			#{moleculeWeight}, 
+			#{obScore}, 
+			#{casId}, 
+			#{tcmidId}, 
+			#{tcmIdId}, 
+			#{tcmspId}, 
+			#{type}, 
+			#{linkIngredientId}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="net.chenlin.dp.modules.cmdata.entity.CmIngredientEntity">
+		SELECT
+			`ingredient_id`, 
+			`molecule_name`, 
+			`pubchem_cid`, 
+			`molecule_structure`, 
+			`molecule_formula`, 
+			`molecule_weight`, 
+			`ob_score`, 
+			`cas_id`, 
+			`tcmid_id`, 
+			`tcm_id_id`, 
+			`tcmsp_id`, 
+			`type`, 
+			`link_ingredient_id`
+		FROM
+			cm_ingredient
+		WHERE
+			ingredient_id = #{ingredientId}
+	</select>
+	
+	<update id="update">
+		UPDATE cm_ingredient
+	 	<set>
+			<if test="moleculeName != null">`molecule_name` = #{moleculeName}, </if>
+			<if test="pubchemCid != null">`pubchem_cid` = #{pubchemCid}, </if>
+			<if test="moleculeStructure != null">`molecule_structure` = #{moleculeStructure}, </if>
+			<if test="moleculeFormula != null">`molecule_formula` = #{moleculeFormula}, </if>
+			<if test="moleculeWeight != null">`molecule_weight` = #{moleculeWeight}, </if>
+			<if test="obScore != null">`ob_score` = #{obScore}, </if>
+			<if test="casId != null">`cas_id` = #{casId}, </if>
+			<if test="tcmidId != null">`tcmid_id` = #{tcmidId}, </if>
+			<if test="tcmIdId != null">`tcm_id_id` = #{tcmIdId}, </if>
+			<if test="tcmspId != null">`tcmsp_id` = #{tcmspId}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="linkIngredientId != null">`link_ingredient_id` = #{linkIngredientId}</if>
+		</set>
+		WHERE
+			ingredient_id = #{ingredientId}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			cm_ingredient
+		WHERE
+			ingredient_id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

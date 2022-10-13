@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.chenlin.dp.modules.cmdata.dao.CmHerbMapper">
+	
+	<select id="listForPage" resultType="net.chenlin.dp.modules.cmdata.entity.CmHerbEntity">
+		SELECT
+			`herb_id`, 
+			`chinese_name`, 
+			`pinyin_name`, 
+			`latin_name`, 
+			`english_name`, 
+			`alias`, 
+			`usePart`, 
+			`source`, 
+			`type`, 
+			`function`, 
+			`symptom`, 
+			`syndrome`, 
+			`properties`, 
+			`meridians`, 
+			`pharmacology`, 
+			`toxic`, 
+			`use_method`, 
+			`use_amount`, 
+			`tcmid_id`, 
+			`tcm_id_id`, 
+			`tcmsp_id`, 
+			`link_herb_id`, 
+			`herbdb_id`
+		FROM
+			cm_herb
+		ORDER BY
+			herb_id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO cm_herb (
+			`chinese_name`, 
+			`pinyin_name`, 
+			`latin_name`, 
+			`english_name`, 
+			`alias`, 
+			`usePart`, 
+			`source`, 
+			`type`, 
+			`function`, 
+			`symptom`, 
+			`syndrome`, 
+			`properties`, 
+			`meridians`, 
+			`pharmacology`, 
+			`toxic`, 
+			`use_method`, 
+			`use_amount`, 
+			`tcmid_id`, 
+			`tcm_id_id`, 
+			`tcmsp_id`, 
+			`link_herb_id`, 
+			`herbdb_id`
+		)
+		VALUES (
+			#{chineseName}, 
+			#{pinyinName}, 
+			#{latinName}, 
+			#{englishName}, 
+			#{alias}, 
+			#{usepart}, 
+			#{source}, 
+			#{type}, 
+			#{function}, 
+			#{symptom}, 
+			#{syndrome}, 
+			#{properties}, 
+			#{meridians}, 
+			#{pharmacology}, 
+			#{toxic}, 
+			#{useMethod}, 
+			#{useAmount}, 
+			#{tcmidId}, 
+			#{tcmIdId}, 
+			#{tcmspId}, 
+			#{linkHerbId}, 
+			#{herbdbId}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="net.chenlin.dp.modules.cmdata.entity.CmHerbEntity">
+		SELECT
+			`herb_id`, 
+			`chinese_name`, 
+			`pinyin_name`, 
+			`latin_name`, 
+			`english_name`, 
+			`alias`, 
+			`usePart`, 
+			`source`, 
+			`type`, 
+			`function`, 
+			`symptom`, 
+			`syndrome`, 
+			`properties`, 
+			`meridians`, 
+			`pharmacology`, 
+			`toxic`, 
+			`use_method`, 
+			`use_amount`, 
+			`tcmid_id`, 
+			`tcm_id_id`, 
+			`tcmsp_id`, 
+			`link_herb_id`, 
+			`herbdb_id`
+		FROM
+			cm_herb
+		WHERE
+			herb_id = #{herbId}
+	</select>
+	
+	<update id="update">
+		UPDATE cm_herb
+	 	<set>
+			<if test="chineseName != null">`chinese_name` = #{chineseName}, </if>
+			<if test="pinyinName != null">`pinyin_name` = #{pinyinName}, </if>
+			<if test="latinName != null">`latin_name` = #{latinName}, </if>
+			<if test="englishName != null">`english_name` = #{englishName}, </if>
+			<if test="alias != null">`alias` = #{alias}, </if>
+			<if test="usepart != null">`usePart` = #{usepart}, </if>
+			<if test="source != null">`source` = #{source}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="function != null">`function` = #{function}, </if>
+			<if test="symptom != null">`symptom` = #{symptom}, </if>
+			<if test="syndrome != null">`syndrome` = #{syndrome}, </if>
+			<if test="properties != null">`properties` = #{properties}, </if>
+			<if test="meridians != null">`meridians` = #{meridians}, </if>
+			<if test="pharmacology != null">`pharmacology` = #{pharmacology}, </if>
+			<if test="toxic != null">`toxic` = #{toxic}, </if>
+			<if test="useMethod != null">`use_method` = #{useMethod}, </if>
+			<if test="useAmount != null">`use_amount` = #{useAmount}, </if>
+			<if test="tcmidId != null">`tcmid_id` = #{tcmidId}, </if>
+			<if test="tcmIdId != null">`tcm_id_id` = #{tcmIdId}, </if>
+			<if test="tcmspId != null">`tcmsp_id` = #{tcmspId}, </if>
+			<if test="linkHerbId != null">`link_herb_id` = #{linkHerbId}, </if>
+			<if test="herbdbId != null">`herbdb_id` = #{herbdbId}</if>
+		</set>
+		WHERE
+			herb_id = #{herbId}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			cm_herb
+		WHERE
+			herb_id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

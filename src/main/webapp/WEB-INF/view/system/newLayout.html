@@ -1,0 +1,100 @@
+<!--
+2021.09.04 lhb
+newLayout更换了vue的版本，从2.2升到了2.6，适配element框架。
+所以，要用element的页面，就必须用newLayout。在html开头改路径。
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>${title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <!-- 全局css -->
+    <link href="${ctxPath}/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/plugins/bootstrap-table/treegrid/jquery-treegird.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/plugins/bootstrap-table/pagejump/bootstrap-table-pagejump.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/plugins/ztree/css/metroStyle/metroStyle.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/plugins/select2/select2.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/plugins/switchery/switchery.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/css/style.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/static/css/common.min.css" rel="stylesheet"/>
+    
+
+    <!-- 全局js -->
+    <script src="${ctxPath}/static/libs/jquery.min.js"></script>
+    <script src="${ctxPath}/static/libs/bootstrap.min.js"></script>
+    <script src="${ctxPath}/static/plugins/layer/layer.js"></script>
+
+    <script src="${ctxPath}/static/libs/echarts.js"></script>
+    <script src="${ctxPath}/static/libs/element/vue.min.js"></script>
+    
+    <script src="${ctxPath}/static/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="${ctxPath}/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="${ctxPath}/static/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="${ctxPath}/static/plugins/bootstrap-table/treegrid/bootstrap-table-treegrid.js"></script>
+    <script src="${ctxPath}/static/plugins/bootstrap-table/treegrid/jquery-treegrid.min.js"></script>
+    <script src="${ctxPath}/static/plugins/bootstrap-table/pagejump/bootstrap-table-pagejump.js"></script>
+    <script src="${ctxPath}/static/plugins/validator/validator.js"></script>
+    <script src="${ctxPath}/static/plugins/laydate/laydate.js"></script>
+    <script src="${ctxPath}/static/plugins/select2/select2.min.js"></script>
+    <script src="${ctxPath}/static/plugins/select2/i18n/zh-CN.min.js"></script>
+    <script src="${ctxPath}/static/plugins/switchery/switchery.min.js"></script>
+    <script src="${ctxPath}/static/plugins/editor/editor.min.js"></script>
+    <script src="${ctxPath}/static/plugins/laydate/laydate.js"></script>
+    <script src="${ctxPath}/static/js/common.js"></script>
+    <script src="${ctxPath}/static/js/form.js"></script>
+    <script type="text/javascript">
+        /** laydate全局主题 **/
+        laydate.set({
+            theme: '#408eba'
+        });
+    </script>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="${ctxPath}/static/css/element/theme-chalk/index.css">
+    <!--引入组件库 -->
+    <script src="${ctxPath}/static/libs/element/index.js"></script>
+
+</head>
+<body>
+<div id="dpLTE" class="container-fluid" v-cloak>
+    ${layoutContent}
+</div>
+</body>
+<style>
+    .input-head{
+        text-align: center;
+        font-size: 20px;
+    }
+    .el-row {
+        margin-bottom: 5px;
+    &:last-child {
+         margin-bottom: 0;
+     }
+    }
+    .el-col {
+        border-radius: 4px;
+    }
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+    .bg-purple {
+        background: #d3dce6;
+    }
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
+    .row-bg {
+        padding: 10px 0;
+        background-color: #f9fafc;
+    }
+</style>
+</html>

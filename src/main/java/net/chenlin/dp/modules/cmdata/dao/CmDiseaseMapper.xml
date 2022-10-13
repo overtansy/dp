@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.chenlin.dp.modules.cmdata.dao.CmDiseaseMapper">
+	
+	<select id="listForPage" resultType="net.chenlin.dp.modules.cmdata.entity.CmDiseaseEntity">
+		SELECT
+			`disease_id`, 
+			`disease_name`, 
+			`disease_definition`, 
+			`umls_id`, 
+			`mesh_id`, 
+			`omim_id`, 
+			`orphanet_id`, 
+			`icd10cm_id`, 
+			`meddra_id`, 
+			`link_disease_id`
+		FROM
+			cm_disease
+		ORDER BY
+			disease_id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO cm_disease (
+			`disease_id`, 
+			`disease_name`, 
+			`disease_definition`, 
+			`umls_id`, 
+			`mesh_id`, 
+			`omim_id`, 
+			`orphanet_id`, 
+			`icd10cm_id`, 
+			`meddra_id`, 
+			`link_disease_id`
+		)
+		VALUES (
+			#{diseaseId}, 
+			#{diseaseName}, 
+			#{diseaseDefinition}, 
+			#{umlsId}, 
+			#{meshId}, 
+			#{omimId}, 
+			#{orphanetId}, 
+			#{icd10cmId}, 
+			#{meddraId}, 
+			#{linkDiseaseId}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="net.chenlin.dp.modules.cmdata.entity.CmDiseaseEntity">
+		SELECT
+			`disease_id`, 
+			`disease_name`, 
+			`disease_definition`, 
+			`umls_id`, 
+			`mesh_id`, 
+			`omim_id`, 
+			`orphanet_id`, 
+			`icd10cm_id`, 
+			`meddra_id`, 
+			`link_disease_id`
+		FROM
+			cm_disease
+		WHERE
+			disease_id = #{diseaseId}
+	</select>
+	
+	<update id="update">
+		UPDATE cm_disease
+	 	<set>
+			<if test="diseaseName != null">`disease_name` = #{diseaseName}, </if>
+			<if test="diseaseDefinition != null">`disease_definition` = #{diseaseDefinition}, </if>
+			<if test="umlsId != null">`umls_id` = #{umlsId}, </if>
+			<if test="meshId != null">`mesh_id` = #{meshId}, </if>
+			<if test="omimId != null">`omim_id` = #{omimId}, </if>
+			<if test="orphanetId != null">`orphanet_id` = #{orphanetId}, </if>
+			<if test="icd10cmId != null">`icd10cm_id` = #{icd10cmId}, </if>
+			<if test="meddraId != null">`meddra_id` = #{meddraId}, </if>
+			<if test="linkDiseaseId != null">`link_disease_id` = #{linkDiseaseId}</if>
+		</set>
+		WHERE
+			disease_id = #{diseaseId}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			cm_disease
+		WHERE
+			disease_id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,86 @@
+@layout("../../system/newLayout.html", {title: ""}){
+
+<el-row style="margin-top: 20px;">
+    <el-col :span="2" class="grid-content bg-purple input-head" offset=11>基础信息</el-col>
+</el-row>
+<el-row style="margin-top: 10px;">
+    <el-col :span="8" offset=7>
+        <el-form ref="form" :model="form" label-width="80px">
+            <el-form-item label="方名">
+                <el-input v-model="form.name" style="width: 400px;"></el-input>
+            </el-form-item>
+            <el-form-item label="来源">
+                <el-input v-model="form.source" style="width: 400px;"></el-input>
+            </el-form-item>
+            <el-form-item label="剂型">
+                <el-input v-model="form.type" style="width: 400px;"></el-input>
+            </el-form-item>
+            <el-form-item label="备注">
+                <el-input v-model="form.remark" style="width: 400px;"></el-input>
+            </el-form-item>
+        </el-form>
+    </el-col>
+</el-row>
+
+<el-row style="margin-top: 10px;">
+    <el-col :span="2" class="grid-content bg-purple input-head" offset=11>方剂组方</el-col>
+</el-row>
+<el-row style="margin-top: 10px;">
+    <el-col :span="8" offset=8>
+        <el-table
+                :data="tableDrug"
+                style="width: 100%">
+            <el-table-column
+                    prop="name"
+                    label="中药名"
+                    width="250px">
+            </el-table-column>
+            <el-table-column
+                    prop="amount"
+                    label="用量"
+                    width="250px">
+            </el-table-column>
+        </el-table>
+    </el-col>
+</el-row>
+
+<el-row>
+    <el-col :span="2" offset=8>
+        <el-select v-model="drug" placeholder="请选择中药">
+            <el-option
+                    v-for="item in drugOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.label">
+            </el-option>
+        </el-select>
+    </el-col>
+    <el-col :span="2" >
+        <el-input-number v-model="amount" :min="1" label="描述文字"></el-input-number>
+    </el-col>
+    <el-col :span="2" offset=1>
+        <el-select v-model="amountType" placeholder="请选择">
+            <el-option
+                    v-for="item in amountOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.label">
+            </el-option>
+        </el-select>
+    </el-col>
+    <el-col :span="1" >
+        <el-button type="primary" \@click="add">添加</el-button>
+    </el-col>
+    <el-col :span="1" style="margin-left: 10px;">
+        <el-button type="primary" \@click="remove">删除</el-button>
+    </el-col>
+</el-row>
+<el-row style="margin-top: 20px;">
+    <el-col :span="1" offset=11>
+        <el-button type="primary" \@click="save">保存</el-button>
+    </el-col>
+</el-row>
+
+
+<script src="${ctxPath}/static/js/cmformula/formula/input.js"></script>
+@}

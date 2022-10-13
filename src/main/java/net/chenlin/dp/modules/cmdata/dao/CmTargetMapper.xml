@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.chenlin.dp.modules.cmdata.dao.CmTargetMapper">
+	
+	<select id="listForPage" resultType="net.chenlin.dp.modules.cmdata.entity.CmTargetEntity">
+		SELECT
+			`gene_id`, 
+			`gene_symbol`, 
+			`chromsome`, 
+			`gene_name`, 
+			`protein_name`, 
+			`hit_id`, 
+			`tcmsp_id`, 
+			`ensembl_id`, 
+			`ncbi_id`, 
+			`hgnc_id`, 
+			`vega_id`, 
+			`genbank_gene_id`, 
+			`gene_bank_protein_id`, 
+			`uniprot_id`, 
+			`pdb_id`, 
+			`mim_id`, 
+			`mirbase_id`
+		FROM
+			cm_target
+		ORDER BY
+			gene_id DESC
+	</select>
+	
+	<insert id="save">
+		INSERT INTO cm_target (
+			`gene_id`, 
+			`gene_symbol`, 
+			`chromsome`, 
+			`gene_name`, 
+			`protein_name`, 
+			`hit_id`, 
+			`tcmsp_id`, 
+			`ensembl_id`, 
+			`ncbi_id`, 
+			`hgnc_id`, 
+			`vega_id`, 
+			`genbank_gene_id`, 
+			`gene_bank_protein_id`, 
+			`uniprot_id`, 
+			`pdb_id`, 
+			`mim_id`, 
+			`mirbase_id`
+		)
+		VALUES (
+			#{geneId}, 
+			#{geneSymbol}, 
+			#{chromsome}, 
+			#{geneName}, 
+			#{proteinName}, 
+			#{hitId}, 
+			#{tcmspId}, 
+			#{ensemblId}, 
+			#{ncbiId}, 
+			#{hgncId}, 
+			#{vegaId}, 
+			#{genbankGeneId}, 
+			#{geneBankProteinId}, 
+			#{uniprotId}, 
+			#{pdbId}, 
+			#{mimId}, 
+			#{mirbaseId}
+		)
+	</insert>
+	
+	<select id="getObjectById" resultType="net.chenlin.dp.modules.cmdata.entity.CmTargetEntity">
+		SELECT
+			`gene_id`, 
+			`gene_symbol`, 
+			`chromsome`, 
+			`gene_name`, 
+			`protein_name`, 
+			`hit_id`, 
+			`tcmsp_id`, 
+			`ensembl_id`, 
+			`ncbi_id`, 
+			`hgnc_id`, 
+			`vega_id`, 
+			`genbank_gene_id`, 
+			`gene_bank_protein_id`, 
+			`uniprot_id`, 
+			`pdb_id`, 
+			`mim_id`, 
+			`mirbase_id`
+		FROM
+			cm_target
+		WHERE
+			gene_id = #{geneId}
+	</select>
+	
+	<update id="update">
+		UPDATE cm_target
+	 	<set>
+			<if test="geneSymbol != null">`gene_symbol` = #{geneSymbol}, </if>
+			<if test="chromsome != null">`chromsome` = #{chromsome}, </if>
+			<if test="geneName != null">`gene_name` = #{geneName}, </if>
+			<if test="proteinName != null">`protein_name` = #{proteinName}, </if>
+			<if test="hitId != null">`hit_id` = #{hitId}, </if>
+			<if test="tcmspId != null">`tcmsp_id` = #{tcmspId}, </if>
+			<if test="ensemblId != null">`ensembl_id` = #{ensemblId}, </if>
+			<if test="ncbiId != null">`ncbi_id` = #{ncbiId}, </if>
+			<if test="hgncId != null">`hgnc_id` = #{hgncId}, </if>
+			<if test="vegaId != null">`vega_id` = #{vegaId}, </if>
+			<if test="genbankGeneId != null">`genbank_gene_id` = #{genbankGeneId}, </if>
+			<if test="geneBankProteinId != null">`gene_bank_protein_id` = #{geneBankProteinId}, </if>
+			<if test="uniprotId != null">`uniprot_id` = #{uniprotId}, </if>
+			<if test="pdbId != null">`pdb_id` = #{pdbId}, </if>
+			<if test="mimId != null">`mim_id` = #{mimId}, </if>
+			<if test="mirbaseId != null">`mirbase_id` = #{mirbaseId}</if>
+		</set>
+		WHERE
+			gene_id = #{geneId}
+	</update>
+	
+	<delete id="batchRemove">
+		DELETE
+		FROM
+			cm_target
+		WHERE
+			gene_id IN
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

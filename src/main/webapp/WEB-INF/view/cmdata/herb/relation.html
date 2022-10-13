@@ -1,0 +1,32 @@
+@layout("../../system/newLayout.html", {title: ""}){
+
+<el-row>
+    <el-col :span="3" offset="1"><div class="grid-content bg-purple" style="text-align: center;">基因名称</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;vertical-align: middle;">IFNG</div></el-col>
+    <el-col :span="3" offset="0"><div class="grid-content bg-purple" style="text-align: center;">染色体</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">12</div></el-col>
+</el-row>
+<el-row style="margin-bottom: 10px;">
+    <el-col :span="3" offset="1"><div class="grid-content bg-purple" style="text-align: center;">全称</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">Active Interferon Gamma</div></el-col>
+    <el-col :span="3" offset="0"><div class="grid-content bg-purple" style="text-align: center;">靶点类型</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">蛋白质</div></el-col>
+</el-row>
+
+<el-row>
+    <el-col :span="3" offset="1"><div class="grid-content bg-purple" style="text-align: center;">基因名称</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">NR3C2</div></el-col>
+    <el-col :span="3" offset="0"><div class="grid-content bg-purple" style="text-align: center;">染色体</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">13</div></el-col>
+</el-row>
+<el-row>
+    <el-col :span="3" offset="1"><div class="grid-content bg-purple" style="text-align: center;">全称</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">nuclear receptor subfamily 3, group C, member 2</div></el-col>
+    <el-col :span="3" offset="0"><div class="grid-content bg-purple" style="text-align: center;">靶点类型</div></el-col>
+    <el-col :span="7" offset="0"><div class="grid-content bg-purple-light" style="text-align: center;">蛋白质</div></el-col>
+</el-row>
+
+<div id="relation" style="width: 100%;height:400px;margin-bottom: 40px"></div>
+
+<script src="${ctxPath}/static/js/cmdata/herb/relation.js"></script>
+@}
